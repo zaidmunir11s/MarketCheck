@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Loader2, Search, Download, Copy, Target, RefreshCw, CircleDollarSign, Settings2, BarChart3, MapPin } from "lucide-react";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
 
@@ -404,7 +404,7 @@ export default function MarketCheckPriceChecker() {
                       <BarChart data={histogramData} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
                         <XAxis dataKey="bucket" tick={{ fontSize: 12 }} interval={0} angle={-25} textAnchor="end" height={60} />
                         <YAxis width={32} tick={{ fontSize: 12 }} />
-                        <Tooltip formatter={(v, n, p) => [`${v} listings`, `${p.payload.bucket}`]} />
+                        <Tooltip formatter={(v, _n, p) => [`${v} listings`, `${p.payload.bucket}`]} />
                         <ReferenceLine x={histogramData.findIndex(b => priceStats && b.bucketStart <= priceStats.med && b.bucketEnd >= priceStats.med)} strokeDasharray="3 3" label={{ value: "Median", position: "insideTopRight" }} />
                         <Bar dataKey="count" />
                       </BarChart>
